@@ -1,0 +1,24 @@
+.emoji {
+    width: 22px;
+    height: 22px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    &:hover {
+        background: var(--hover-color);
+        border-radius: 3px;
+    }
+
+    // Todo: align emoji center
+    // https://stackoverflow.com/questions/44142464/how-do-i-horizontally-center-an-emoji
+    line-height: 22px;
+    font-size: 26px;
+
+    span {
+        font-size: 0.615384em;
+    }
+}
