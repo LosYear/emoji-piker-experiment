@@ -3,16 +3,18 @@
 import React, { useState } from 'react';
 import './popup.scss';
 import { EmojiList } from './emojiList';
-import EmojiSection from './EmojiSection';
+import EmojiSection, { EmojiSectionProps } from './EmojiSection';
 
 export type PopupProps = {
     sections: Array<{
         items: Array<EmojiList>;
         icon: React.ReactNode;
     }>;
+
+    onItemClick: EmojiSectionProps['onItemClick'];
 };
 
-const Popup: React.FC<PopupProps> = ({ children, sections }) => {
+const Popup: React.FC<PopupProps> = ({ sections, onItemClick }) => {
     const [activeTab, setActiveTab] = useState(0);
 
     return (
@@ -21,7 +23,7 @@ const Popup: React.FC<PopupProps> = ({ children, sections }) => {
                 <div className="popup__scroll-area-wrapper">
                     <div className="popup__scroll-area">
                         {sections[activeTab].items.map(({ title, items }) => (
-                            <EmojiSection title={title} items={items} key={title} />
+                            <EmojiSection title={title} items={items} key={title} onItemClick={onItemClick} />
                         ))}
                     </div>
                 </div>

@@ -5,17 +5,12 @@ import Popup from './components/emoji/Popup';
 import emojiList from './components/emoji/emojiList';
 import SmileIcon from './styleguide/icons/SmileIcon';
 import ClockIcon from './styleguide/icons/ClockIcon';
+import EmojiInput from './components/emoji-input/EmojiInput';
 
 const App = () => (
     <div>
         <PageLayout>
-            <Popup
-                sections={[
-                    { items: emojiList, icon: <SmileIcon color="#99A2AD" /> },
-                    { items: [], icon: <ClockIcon color="#99A2AD" /> },
-                ]}
-            />
-            <Input />
+            <EmojiInput />
         </PageLayout>
     </div>
 );

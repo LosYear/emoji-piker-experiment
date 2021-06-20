@@ -112,6 +112,7 @@ const onInput = (input: HTMLDivElement) => {
     restoreSelection(input, anchorIndex, focusIndex);
 };
 
+// todo: focus if not focused
 const insertAtCurrentPosition = (char: string) => document.execCommand('insertText', false, char);
 
 // todo: handle enter correctly
@@ -137,6 +138,8 @@ const Input = forwardRef((_, ref) => {
     useImperativeHandle(ref, () => ({
         insertAtCurrentPosition,
     }));
+
+    // todo: add render prop for actions
 
     return (
         <div className="input">
