@@ -1,0 +1,20 @@
+.emoji-button {
+    width: 36px;
+    height: 36px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    float: right;
+
+    background: none;
+    outline: none;
+    appearance: none;
+    border: none;
+}
+
+.emoji-button svg {
+    width: 24px;
+    height: 24px;
+}

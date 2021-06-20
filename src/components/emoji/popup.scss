@@ -6,11 +6,11 @@
 }
 
 .popup__container {
-    // todo: replace with outer container
-    width: 290px;
+    width: 100%;
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
     background: white;
+    box-sizing: border-box;
 
     overflow: hidden;
 }

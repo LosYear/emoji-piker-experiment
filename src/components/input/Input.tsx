@@ -4,6 +4,7 @@ import isLink from '../../helpers/isLink';
 import isMention from '../../helpers/isMention';
 import isHashtag from '../../helpers/isHashtag';
 import './input.scss';
+import EmojiButton from './EmojiButton';
 
 type TextSegment = {
     text: string;
@@ -139,6 +140,7 @@ const Input = forwardRef((_, ref) => {
 
     return (
         <div className="input">
+            <EmojiButton />
             <div className="input__inner input__input" ref={inputRef} contentEditable onInput={onInputUpdate} />
             {showPlaceholder && <div className="input__inner input__placeholder">Введите сообщение</div>}
         </div>

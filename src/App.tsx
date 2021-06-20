@@ -1,7 +1,6 @@
 import React from 'react';
 import Input from './components/input/Input';
 import PageLayout from './components/page-layout/PageLayout';
-import InputContainer from './components/input-container/InputContainer';
 import Popup from './components/emoji/Popup';
 import emojiList from './components/emoji/emojiList';
 import SmileIcon from './styleguide/icons/SmileIcon';
@@ -16,9 +15,7 @@ const App = () => (
                     { items: [], icon: <ClockIcon color="#99A2AD" /> },
                 ]}
             />
-            <InputContainer>
-                <Input />
-            </InputContainer>
+            <Input />
         </PageLayout>
     </div>
 );
