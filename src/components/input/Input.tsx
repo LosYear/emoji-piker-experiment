@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
 import isEmail from '../../helpers/isEmail';
 import isLink from '../../helpers/isLink';
 import isMention from '../../helpers/isMention';
@@ -9,8 +9,6 @@ type TextSegment = {
     text: string;
     node: Node;
 };
-
-// todo: document.execCommand('insertText', false, 'banana')
 
 const getTextSegments = (root: Node) => {
     const segments: Array<TextSegment> = [];
@@ -108,16 +106,16 @@ const onInput = (input: HTMLDivElement) => {
         currentIndex += text.length;
     });
 
-    console.log(formatText(textContent));
-
     input.innerHTML = formatText(textContent);
 
     restoreSelection(input, anchorIndex, focusIndex);
 };
 
+const insertAtCurrentPosition = (char: string) => document.execCommand('insertText', false, char);
+
 // todo: handle enter correctly
 
-const Input = () => {
+const Input = forwardRef((_, ref) => {
     const [showPlaceholder, setShowPlaceholder] = useState(true);
     const inputRef = useRef<HTMLDivElement>(null);
 
@@ -135,12 +133,16 @@ const Input = () => {
         }
     };
 
+    useImperativeHandle(ref, () => ({
+        insertAtCurrentPosition,
+    }));
+
     return (
         <div className="input">
             <div className="input__inner input__input" ref={inputRef} contentEditable onInput={onInputUpdate} />
             {showPlaceholder && <div className="input__inner input__placeholder">Введите сообщение</div>}
         </div>
     );
-};
+});
 
 export default Input;
