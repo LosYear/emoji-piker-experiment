@@ -23,3 +23,11 @@
 
     pointer-events: none;
 }
+
+.input__input {
+    outline: none;
+
+    span {
+        color: var(--accent-color);
+    }
+}
