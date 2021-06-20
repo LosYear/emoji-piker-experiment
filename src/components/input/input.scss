@@ -2,7 +2,24 @@
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
 
-    padding: 9px;
-
     box-sizing: border-box;
+
+    font-size: 13px;
+    line-height: 18px;
+
+    position: relative;
+}
+
+.input__inner {
+    padding: 9px;
+}
+
+.input__placeholder {
+    color: var(--gray-200);
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    pointer-events: none;
 }
