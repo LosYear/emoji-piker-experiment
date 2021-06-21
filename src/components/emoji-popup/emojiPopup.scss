@@ -1,13 +1,12 @@
-.popup {
+.emoji-popup {
     overflow: hidden;
-    margin-bottom: 30px;
 
     filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.1));
 }
 
-.popup__container {
+.emoji-popup__container {
     width: 100%;
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--stel-gray-300);
     border-radius: var(--border-radius);
     background: white;
     box-sizing: border-box;
@@ -15,35 +14,49 @@
     overflow: hidden;
 }
 
-.popup-tabs {
+.emoji-popup-tabs {
     display: flex;
-    background: var(--gray-100);
+    background: var(--gray-200);
 }
 
-.popup-tabs__tab {
+.emoji-popup-tabs__tab {
     padding: 6px;
+
+    outline: none;
+    appearance: none;
+    background: none;
+    border: none;
 
     &_active {
         background: white;
     }
+
+    &:not(&_active) {
+        cursor: pointer;
+
+        &:hover,
+        &:focus {
+            background: var(--steel-gray-100);
+        }
+    }
 }
 
-.popup-tabs__tab-icon {
+.emoji-popup-tabs__tab-icon {
     width: 24px;
     height: 24px;
 }
 
-.popup__scroll-area-wrapper {
+.emoji-popup__scroll-area-wrapper {
     padding: 5px 5px 7px 0;
 }
 
-.popup__scroll-area {
+.emoji-popup__scroll-area {
     height: 235px;
     overflow-y: scroll;
 
     padding: 0 6px;
 
-    scrollbar-color: var(--blue) white !important;
+    scrollbar-color: var(--steel-gray-200) white !important;
     scrollbar-width: thin !important;
 
     &::-webkit-scrollbar {
@@ -52,12 +65,12 @@
 
     &::-webkit-scrollbar-thumb {
         width: 100%;
-        background: var(--blue);
+        background: var(--steel-gray-200);
         border-radius: 2px;
     }
 }
 
-.popup__tip-wrapper {
+.emoji-popup__tip-wrapper {
     width: 19px;
     height: 6px;
     overflow: hidden;
@@ -66,14 +79,14 @@
     margin-right: 10px;
 }
 
-.popup__tip {
+.emoji-popup__tip {
     position: absolute;
     width: 19px;
     height: 19px;
     left: -1px;
     top: -17px;
-    background: var(--gray-100);
+    background: var(--gray-200);
     transform: rotate(45deg);
     border-radius: 6px;
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--stel-gray-300);
 }

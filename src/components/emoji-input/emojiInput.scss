@@ -1,0 +1,44 @@
+.emoji-input {
+    position: relative;
+}
+
+.emoji-input__popup {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    padding-bottom: 5px;
+
+    transform: translate3d(0, -100%, 0);
+
+    visibility: hidden;
+}
+
+.emoji-input__animation {
+    &-enter {
+        opacity: 0;
+        visibility: visible;
+    }
+    &-enter-active {
+        opacity: 1;
+        transition: opacity 200ms;
+    }
+
+    &-enter-done {
+        visibility: visible;
+    }
+
+    &-exit {
+        opacity: 1;
+        visibility: visible;
+    }
+    &-exit-active {
+        opacity: 0;
+        transition: opacity 200ms;
+    }
+
+    &-exit-done {
+        opacity: 0;
+        visibility: hidden;
+    }
+}

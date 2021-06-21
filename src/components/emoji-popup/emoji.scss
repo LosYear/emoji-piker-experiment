@@ -12,15 +12,16 @@
     appearance: none;
     background: none;
     border: none;
+    user-select: none;
+
+    cursor: pointer;
 
     &:hover,
     &:focus {
-        background: var(--hover-color);
+        background: var(--gray-100);
         border-radius: 3px;
     }
 
-    // Todo: align emoji center
-    // https://stackoverflow.com/questions/44142464/how-do-i-horizontally-center-an-emoji
     line-height: 22px;
     font-size: 26px;
 

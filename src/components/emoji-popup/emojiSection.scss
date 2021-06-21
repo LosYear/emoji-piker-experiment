@@ -14,12 +14,11 @@
     font-size: 13px;
     line-height: 15px;
 
-    color: var(--gray-200);
+    color: var(--gray-300);
 }
 
 .emoji-section__grid {
     display: grid;
-    // Todo: repale hardcoded value, duplicates emoji size
     grid-template-columns: repeat(10, 22px);
     grid-column-gap: 5px;
     grid-row-gap: 4px;

@@ -4,7 +4,6 @@ import isLink from '../../helpers/isLink';
 import isMention from '../../helpers/isMention';
 import isHashtag from '../../helpers/isHashtag';
 import './input.scss';
-import EmojiButton from './EmojiButton';
 import {
     getTextSegmentsFromNode,
     insertAtCurrentPosition,
@@ -60,7 +59,12 @@ const onInput = (input: HTMLDivElement) => {
 
 // todo: handle enter correctly
 
-const Input = forwardRef((_, ref) => {
+type InputProps = {
+    actions: React.ReactNode;
+};
+
+// todo: fix typings
+const Input = forwardRef<unknown, InputProps>(({ actions }, ref) => {
     const [showPlaceholder, setShowPlaceholder] = useState(true);
     const inputRef = useRef<HTMLDivElement>(null);
 
@@ -108,11 +112,9 @@ const Input = forwardRef((_, ref) => {
         insertAtCurrentPosition: insertChar,
     }));
 
-    // todo: add render prop for actions
-
     return (
         <div className="input">
-            <EmojiButton />
+            {actions}
             <div className="input__inner input__input" ref={inputRef} contentEditable onInput={onInputUpdate} />
             {showPlaceholder && <div className="input__inner input__placeholder">Введите сообщение</div>}
         </div>

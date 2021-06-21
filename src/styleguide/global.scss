@@ -1,15 +1,18 @@
 :root {
     --bg-color: #fff;
 
-    --border-color: #c5d0db;
+    --gray-100: #f0f2f5;
+    --gray-200: #ebeef2;
+    --gray-300: #939393;
+
+    --steel-gray-100: #dce1e6;
+    --steel-gray-200: #dae2ea;
+    --stel-gray-300: #c5d0db;
+    --steel-gray-400: #99a2ad;
+
+    --accent-color: #2a5885;
+
     --border-radius: 4px;
-
-    --hover-color: #f0f2f5;
-    --gray-100: #ebeef2;
-    --gray-200: #939393;
-    --blue: #dae2ea;
-
-    --accent-color: rgb(42, 88, 133);
 }
 
 body {

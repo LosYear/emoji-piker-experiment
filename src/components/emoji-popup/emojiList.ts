@@ -1,4 +1,4 @@
-import { PopupEmojiList } from '../emoji/types';
+import { PopupEmojiList } from './types';
 
 const list: Array<PopupEmojiList> = [
     {
