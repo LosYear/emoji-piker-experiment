@@ -34,14 +34,27 @@
 }
 
 .popup__scroll-area-wrapper {
-    padding: 5px 0 7px;
+    padding: 5px 5px 7px 0;
 }
 
 .popup__scroll-area {
     height: 235px;
-    overflow: scroll;
+    overflow-y: scroll;
 
     padding: 0 6px;
+
+    scrollbar-color: var(--blue) white !important;
+    scrollbar-width: thin !important;
+
+    &::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        width: 100%;
+        background: var(--blue);
+        border-radius: 2px;
+    }
 }
 
 .popup__tip-wrapper {
