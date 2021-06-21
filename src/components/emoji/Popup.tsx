@@ -2,12 +2,12 @@
 
 import React, { useState } from 'react';
 import './popup.scss';
-import { EmojiList } from './emojiList';
 import EmojiSection, { EmojiSectionProps } from './EmojiSection';
+import { PopupEmojiList } from './types';
 
 export type PopupProps = {
     sections: Array<{
-        items: Array<EmojiList>;
+        items: Array<PopupEmojiList>;
         icon: React.ReactNode;
     }>;
 
@@ -31,6 +31,7 @@ const Popup: React.FC<PopupProps> = ({ sections, onItemClick }) => {
                     {sections.map(({ icon }, index) => (
                         <div
                             key={index}
+                            onClick={() => setActiveTab(index)}
                             className={'popup-tabs__tab' + (index === activeTab ? ' popup-tabs__tab_active' : '')}>
                             <div className="popup-tabs__tab-icon">{icon}</div>
                         </div>

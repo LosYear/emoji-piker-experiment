@@ -1,9 +1,9 @@
 import React from 'react';
 import './emojiSection.scss';
 import Emoji from './Emoji';
-import { EmojiList } from './emojiList';
+import { PopupEmojiList } from './types';
 
-export type EmojiSectionProps = EmojiList & { onItemClick: (emoji: string) => void };
+export type EmojiSectionProps = PopupEmojiList & { onItemClick: (emoji: string) => void };
 
 const EmojiSection: React.FC<EmojiSectionProps> = ({ title, items, onItemClick }) => (
     <div className="emoji-section">

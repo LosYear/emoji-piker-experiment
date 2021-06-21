@@ -1,9 +1,6 @@
-export type EmojiList = {
-    title: string;
-    items: Array<string>;
-};
+import { PopupEmojiList } from '../emoji/types';
 
-const list: Array<EmojiList> = [
+const list: Array<PopupEmojiList> = [
     {
         title: 'Эмоции',
         items: [
