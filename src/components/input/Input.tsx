@@ -10,6 +10,7 @@ import {
     restoreSelection,
     setSelectionAtEnd,
 } from '../../helpers/selection';
+import classNames from 'classnames';
 
 const formatText = (text: string) => {
     const words = text.split(/(\s+)/);
@@ -61,10 +62,11 @@ const onInput = (input: HTMLDivElement) => {
 
 type InputProps = {
     actions: React.ReactNode;
-};
+    className?: string;
+} & Pick<JSX.IntrinsicElements['input'], 'onKeyDown'>;
 
 // todo: fix typings
-const Input = forwardRef<unknown, InputProps>(({ actions }, ref) => {
+const Input = forwardRef<unknown, InputProps>(({ actions, className, onKeyDown }, ref) => {
     const [showPlaceholder, setShowPlaceholder] = useState(true);
     const inputRef = useRef<HTMLDivElement>(null);
 
@@ -110,13 +112,22 @@ const Input = forwardRef<unknown, InputProps>(({ actions }, ref) => {
 
     useImperativeHandle(ref, () => ({
         insertAtCurrentPosition: insertChar,
+        focus: () => {
+            inputRef.current?.focus();
+        },
     }));
 
     return (
-        <div className="input">
-            {actions}
-            <div className="input__inner input__input" ref={inputRef} contentEditable onInput={onInputUpdate} />
+        <div className={classNames('input', className)}>
+            <div
+                className="input__inner input__input"
+                ref={inputRef}
+                contentEditable
+                onInput={onInputUpdate}
+                onKeyDown={onKeyDown}
+            />
             {showPlaceholder && <div className="input__inner input__placeholder">Введите сообщение</div>}
+            {actions}
         </div>
     );
 });

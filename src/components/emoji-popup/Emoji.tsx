@@ -3,12 +3,10 @@ import './emoji.scss';
 
 export type EmojiProps = {
     icon: string;
+} & Pick<JSX.IntrinsicElements['button'], 'tabIndex' | 'onClick' | 'onKeyDown'>;
 
-    onClick: JSX.IntrinsicElements['button']['onClick'];
-};
-
-const Emoji: React.FC<EmojiProps> = ({ icon, onClick }) => (
-    <button className="emoji" onClick={onClick}>
+const Emoji: React.FC<EmojiProps> = ({ icon, onClick, tabIndex, onKeyDown }) => (
+    <button className="emoji" onClick={onClick} tabIndex={tabIndex} onKeyDown={onKeyDown}>
         <span>{icon}</span>
     </button>
 );
