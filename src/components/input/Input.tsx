@@ -125,8 +125,14 @@ const Input = forwardRef<unknown, InputProps>(({ actions, className, onKeyDown }
                 contentEditable
                 onInput={onInputUpdate}
                 onKeyDown={onKeyDown}
+                role="textbox"
+                aria-multiline
             />
-            {showPlaceholder && <div className="input__inner input__placeholder">Введите сообщение</div>}
+            {showPlaceholder && (
+                <div className="input__inner input__placeholder" role="">
+                    Введите сообщение
+                </div>
+            )}
             {actions}
         </div>
     );
