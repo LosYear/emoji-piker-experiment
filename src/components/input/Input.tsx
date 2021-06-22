@@ -1,4 +1,4 @@
-import React, { forwardRef, useImperativeHandle, useRef, useState } from 'react';
+import React, { forwardRef, useImperativeHandle, useRef } from 'react';
 import isEmail from '../../helpers/isEmail';
 import isLink from '../../helpers/isLink';
 import isMention from '../../helpers/isMention';
@@ -67,20 +67,7 @@ type InputProps = {
 
 // todo: fix typings
 const Input = forwardRef<unknown, InputProps>(({ actions, className, onKeyDown }, ref) => {
-    const [showPlaceholder, setShowPlaceholder] = useState(true);
     const inputRef = useRef<HTMLDivElement>(null);
-
-    const updatePlaceholder = () => {
-        if (!inputRef.current) {
-            return;
-        }
-
-        if (inputRef.current.innerHTML === '' && !showPlaceholder) {
-            setShowPlaceholder(true);
-        } else if (inputRef.current.innerHTML !== '' && showPlaceholder) {
-            setShowPlaceholder(false);
-        }
-    };
 
     const onInputUpdate = () => {
         if (!inputRef.current) {
@@ -88,7 +75,6 @@ const Input = forwardRef<unknown, InputProps>(({ actions, className, onKeyDown }
         }
 
         onInput(inputRef.current);
-        updatePlaceholder();
     };
 
     const insertChar = (char: string) => {
@@ -107,7 +93,6 @@ const Input = forwardRef<unknown, InputProps>(({ actions, className, onKeyDown }
         }
 
         insertAtCurrentPosition(char);
-        updatePlaceholder();
     };
 
     useImperativeHandle(ref, () => ({
@@ -128,11 +113,6 @@ const Input = forwardRef<unknown, InputProps>(({ actions, className, onKeyDown }
                 role="textbox"
                 aria-multiline
             />
-            {showPlaceholder && (
-                <div className="input__inner input__placeholder" role="">
-                    Введите сообщение
-                </div>
-            )}
             {actions}
         </div>
     );
