@@ -15,7 +15,13 @@ import classNames from 'classnames';
 const formatText = (text: string) => {
     const words = text.split(/(\s+)/);
 
+    console.log(words);
+
     const output = words.map((word) => {
+        if (word.includes('\n')) {
+            word = word.replaceAll('\n', '<br/>');
+        }
+
         if (isEmail(word) || isLink(word) || isMention(word) || isHashtag(word)) {
             return `<span>${word}</span>`;
         } else {
@@ -58,15 +64,17 @@ const onInput = (input: HTMLDivElement) => {
     restoreSelection(input, anchorIndex, focusIndex);
 };
 
-// todo: handle enter correctly
-
 type InputProps = {
     actions: React.ReactNode;
     className?: string;
 } & Pick<JSX.IntrinsicElements['input'], 'onKeyDown'>;
 
-// todo: fix typings
-const Input = forwardRef<unknown, InputProps>(({ actions, className, onKeyDown }, ref) => {
+export type InputInterface = {
+    insertAtCurrentPosition: (char: string) => void;
+    focus: () => void;
+};
+
+const Input = forwardRef<InputInterface, InputProps>(({ actions, className, onKeyDown }, ref) => {
     const inputRef = useRef<HTMLDivElement>(null);
 
     const onInputUpdate = () => {

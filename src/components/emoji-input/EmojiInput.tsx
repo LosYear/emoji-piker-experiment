@@ -1,12 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
-import Input from '../input/Input';
+import Input, { InputInterface } from '../input/Input';
 import EmojiPopupConnected from '../emoji-popup/EmojiPopupConnected';
 import EmojiButton from './EmojiButton';
 import { CSSTransition } from 'react-transition-group';
 import './emojiInput.scss';
 
 const EmojiInput = () => {
-    const inputRef = useRef();
+    const inputRef = useRef<InputInterface>(null);
     const [popupVisible, setPopupVisible] = useState(false);
 
     useEffect(() => {
@@ -17,9 +17,7 @@ const EmojiInput = () => {
         const listener = (e: KeyboardEvent) => {
             if (e.key === 'Escape') {
                 setPopupVisible(false);
-                // Todo: fix typings
-                // @ts-ignore
-                inputRef.current.focus();
+                inputRef.current?.focus();
             }
         };
 
@@ -29,9 +27,7 @@ const EmojiInput = () => {
     }, [popupVisible]);
 
     const onItemClick = (emoji: string) => {
-        // Todo: fix typings
-        // @ts-ignore
-        inputRef.current.insertAtCurrentPosition(emoji);
+        inputRef.current?.insertAtCurrentPosition(emoji);
     };
 
     const showPopup = () => setPopupVisible(true);

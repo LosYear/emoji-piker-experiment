@@ -49,6 +49,8 @@ export const getTextSegmentsFromNode = (root: Node) => {
     root.childNodes.forEach((node) => {
         if (node.nodeType === Node.TEXT_NODE) {
             segments.push({ text: node.nodeValue || '', node });
+        } else if (node.nodeType === Node.ELEMENT_NODE && (node as HTMLElement).tagName === 'BR') {
+            segments.push({ text: '\n', node });
         } else if (node.nodeType === Node.ELEMENT_NODE) {
             segments.splice(segments.length, 0, ...getTextSegmentsFromNode(node));
         }
